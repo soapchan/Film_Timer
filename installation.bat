@@ -1,0 +1,1 @@
+pip install -r c:/path/to/requirements.txt
