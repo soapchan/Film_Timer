@@ -10,8 +10,7 @@ This project is a film timer for photography enthusiasts. It helps you keep trac
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/soapcan/film-timer.git`
-2. Navigate to the project directory: `cd film-timer`
-3. Install dependencies: `pip install -r requirements.txt`
+2. Run the `run.bat` file to initialise the project.
 
 ## Usage
 
