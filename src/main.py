@@ -33,20 +33,21 @@ class App:
 
         self.window = tk.Tk()
         self.window.title("Photography Development Time Calculator")
+        self.window.configure(bg="#DBBD8F")
 
-        self.title_label = tk.Label(self.window, text="Photography Development Time Calculator", font=("Heather", 20))
+        self.title_label = tk.Label(self.window, text="Photography Development Time Calculator", font=("Heather", 20), bg="#DBBD8F")
         self.title_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
 
-        self.temperature_label = tk.Label(self.window, text="Temperature (°C):", font=("Heather", 12))
+        self.temperature_label = tk.Label(self.window, text="Temperature (°C):", font=("Heather", 12), bg="#DBBD8F")
         self.temperature_label.grid(row=1, column=0, padx=10, pady=10, sticky=tk.E)
 
-        self.temperature_entry = tk.Entry(self.window)
+        self.temperature_entry = tk.Entry(self.window, bd=5)
         self.temperature_entry.grid(row=1, column=1, padx=10, pady=10, sticky=tk.W)
 
-        self.output_box = tk.Label(self.window, height=16, width=55, relief=tk.SUNKEN, anchor=tk.NW, justify=tk.LEFT, font=("Heather", 11))
+        self.output_box = tk.Label(self.window, height=16, width=55, relief=tk.SUNKEN, anchor=tk.NW, justify=tk.LEFT, font=("Heather", 11), bd=10)
         self.output_box.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
-        self.confirm_button = tk.Button(self.window, text="Calculate", command=self.calculate, font=("Heather", 12))
+        self.confirm_button = tk.Button(self.window, text="Calculate", command=self.calculate, font=("Heather", 12), bd=5)
         self.confirm_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
         self.selected_film_type = tk.StringVar()
