@@ -2,6 +2,9 @@ import tkinter as tk
 import json
 from tkinter import messagebox
 import time
+import logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.info("Imports successful.")
 
 
 class App:
@@ -26,7 +29,7 @@ class App:
         self.config_file = "src\\config.json"
         self.json_data = self.get_json()
 
-        self.control_temperature = self.json_data['control_temperature']
+        self.control_temperature = self.json_data['formulas']['control_temp']
 
         self.window = tk.Tk()
         self.window.title("Photography Development Time Calculator")
@@ -49,6 +52,7 @@ class App:
         self.selected_film_type = tk.StringVar()
         self.film_type_dropdown = tk.OptionMenu(self.window, self.selected_film_type, *self.json_data['film types'])
         self.film_type_dropdown.grid(row=3, column=0, columnspan=1)
+        logging.info("UI elements set up.")
     
 
     def get_json(self):
@@ -56,13 +60,20 @@ class App:
         Reads the configuration file and returns its contents as a dictionary.
         """
         with open(self.config_file, "r") as file:
-            return json.load(file)
+            try:
+                logging.info("Reading configuration file.")
+                return json.load(file)
+            except Exception as e:
+                logging.error("Failed to read configuration file: " + str(e))
+                return {}
 
 
     def calculate(self):
         """
         Calculates the film development time based on the temperature and selected film type.
         """
+        logging.info("Calculating film development time.")
+        
         if not self.selected_film_type.get():
             messagebox.showerror("Error", "Please select a film type.")
             return
@@ -92,12 +103,14 @@ class App:
                     \n\nStep 7: Remove the wetting agent and rinse for {self.json_data['formulas']['rinse time']} seconds\
                     \n\nStep 8: Hang the film to dry"
 
-        print(temperature_difference)
+        logging.info("Film development time calculated.")
         self.output_box.config(text=output_text)
 
 
 app = App()
+logging.info("Application declared.")
 
 
 if __name__ == "__main__":
+    logging.info("Application started.")
     app.window.mainloop()
