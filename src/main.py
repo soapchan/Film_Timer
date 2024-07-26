@@ -65,7 +65,7 @@ class App:
         developer_time = int(self.json_data["formulas"]["development"]["control_time"])
 
         if temperature_difference > 0:
-            developer_time *= (1.1** temperature_difference)
+            developer_time = 6.5 * 1.1 ** (24 - temperature)
 
         output_text = f"Step 1: Combine {self.json_data["formulas"]["development"]["water"]}ml water and {self.json_data["formulas"]["development"]["solution"]}ml developer for {developer_time}\
                     \n\nStep 2: Combine {self.json_data["formulas"]["stopper"]["water"]}ml water and {self.json_data["formulas"]["stopper"]["solution"]}ml stopper for {...}\
