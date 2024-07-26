@@ -36,7 +36,7 @@ class App:
         self.temperature_entry = tk.Entry(self.window)
         self.temperature_entry.grid(row=1, column=1)
 
-        self.output_box = tk.Label(self.window, height=10, width=55, relief=tk.SUNKEN, anchor=tk.NW, justify=tk.LEFT, font=("Heather", 11))
+        self.output_box = tk.Label(self.window, height=15, width=55, relief=tk.SUNKEN, anchor=tk.NW, justify=tk.LEFT, font=("Heather", 11))
         self.output_box.grid(row=2, column=0, columnspan=2)
 
         self.confirm_button = tk.Button(self.window, text="Calculate", command=self.calculate)
@@ -65,12 +65,16 @@ class App:
         developer_time = int(self.json_data["formulas"]["development"]["control_time"])
 
         if temperature_difference > 0:
-            developer_time = 6.5 * 1.1 ** (24 - temperature)
+            developer_time = (6.5 * self.json_data["film types"][self.selected_film_type.get()] ** (24 - temperature)).__round__(2)
 
         output_text = f"Step 1: Combine {self.json_data["formulas"]["development"]["water"]}ml water and {self.json_data["formulas"]["development"]["solution"]}ml developer for {developer_time}\
-                    \n\nStep 2: Combine {self.json_data["formulas"]["stopper"]["water"]}ml water and {self.json_data["formulas"]["stopper"]["solution"]}ml stopper for {...}\
+                    \n\nStep 2: Combine {self.json_data["formulas"]["stopper"]["water"]}ml water and {self.json_data["formulas"]["stopper"]["solution"]}ml stopper for {self.json_data["formulas"]["stopper"]["time"]}\
                     \n\nStep 3: Remove the stopper and rinse for {self.json_data["formulas"]["rinse time"]} seconds\
-                    \n\nStep 4: ..."
+                    \n\nStep 4: Combine {self.json_data["formulas"]["fixer"]["water"]}ml water and {self.json_data["formulas"]["fixer"]["solution"]}ml fixer for {self.json_data["formulas"]["stopper"]["time"]}\
+                    \n\nStep 5: Remove the fixer and rinse for {self.json_data["formulas"]["rinse time"]} seconds\
+                    \n\nStep 6: Combine Combine {self.json_data["formulas"]["wetting agent"]["water"]}ml water and {self.json_data["formulas"]["wetting agent"]["solution"]}ml wetting agent for {self.json_data["formulas"]["wetting agent"]["time"]}\
+                    \n\nStep 7: Remove the wetting agent and rinse for {self.json_data["formulas"]["rinse time"]} seconds\
+                    \n\nStep 8: Hang the film to dry"
 
         print(temperature_difference)
         self.output_box.config(text=output_text)
