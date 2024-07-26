@@ -1,0 +1,29 @@
+{
+    "formulas": {
+        "ratio": "water:solution",
+        "rinse time": 30,
+        "development": {
+            "water": 25,
+            "solution": 665,
+            "control_time": 6.5
+        },
+        "stopper": {
+            "water": 0,
+            "solution": 0,
+            "time": 0
+        },
+        "fixer": {
+            "water": 0,
+            "solution": 0,
+            "time": 0
+        },
+        "wetting agent": {
+            "water": 0,
+            "solution": 0,
+            "time": 0
+        }
+    },
+    "film types": {
+        "Delta 400": 1.1
+    }
+}
