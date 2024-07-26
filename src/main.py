@@ -77,11 +77,13 @@ class App:
         
         if not self.selected_film_type.get():
             messagebox.showerror("Error", "Please select a film type.")
+            logging.error("No film type selected.")
             return
         try:
             temperature = int(self.temperature_entry.get())
         except ValueError:
             messagebox.showerror("Error", "Invalid temperature value. Please enter a valid integer.")
+            logging.error("Invalid temperature value.")
             return
         temperature = int(self.temperature_entry.get())
         temperature_difference = int(self.control_temperature - temperature)
