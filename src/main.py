@@ -57,7 +57,7 @@ class App:
 
     def calculate(self):
         """
-        Placeholder method for performing the calculation based on the input temperature.
+        Calculates the film development time based on the temperature and selected film type.
         """
         temperature = int(self.temperature_entry.get())
         temperature_difference = int(self.control_temperature - temperature)
