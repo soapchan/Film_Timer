@@ -9,7 +9,7 @@ This project is a film timer for photography enthusiasts. It helps you keep trac
 
 ## Installation
 
-1. Clone the repository: `git clone [https://github.com/soapcan/film-timer.git](https://github.com/soapchan/Film_Timer.git)`
+1. Clone the repository: `git clone https://github.com/soapchan/Film_Timer.git`
 2. Run the `run.bat` file to initialise the project.
 
 ## Usage
