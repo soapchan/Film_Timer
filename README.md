@@ -12,8 +12,6 @@ This project is a film timer for photography enthusiasts. It helps you keep trac
 1. Clone the repository: `git clone https://github.com/soapchan/Film_Timer.git`
 2. Run the `installation.bat` file to initialise the project
 
-#### NOTICE: If you do not have python installed, it will do so.
-
 ## Usage
 
 1. Open the project directory.
