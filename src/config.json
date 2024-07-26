@@ -1,5 +1,6 @@
 {
     "formulas": {
+        "control_temp": 24,
         "ratio": "water:solution",
         "rinse time": 30,
         "development": {

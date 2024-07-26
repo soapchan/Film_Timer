@@ -9,6 +9,8 @@ class App:
     A class representing the Photography Development Time Calculator application.
 
     Attributes:
+    - config_file: The path to the configuration file.
+    - title_label: A label for the title of the application.
     - window: The main window of the application.
     - temperature_label: A label for the temperature input.
     - temperature_entry: An entry field for the temperature input.
@@ -24,7 +26,7 @@ class App:
         self.config_file = "src\\config.json"
         self.json_data = self.get_json()
 
-        self.control_temperature = 24
+        self.control_temperature = self.json_data['control_temperature']
 
         self.window = tk.Tk()
         self.window.title("Photography Development Time Calculator")
