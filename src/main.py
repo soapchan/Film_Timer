@@ -16,7 +16,7 @@ class App:
     - title_label: A label for the title of the application.
     - window: The main window of the application.
     - temperature_label: A label for the temperature input.
-    - temperature_entry: An entry field for the temperature input.
+    - temperature_spinbox: An entry field for the temperature input.
     - output_box: A text box for displaying the output.
     - confirm_button: A button for triggering the calculation.
     - output_text: The text to be displayed in the output box.
@@ -41,8 +41,8 @@ class App:
         self.temperature_label = tk.Label(self.window, text="Temperature (°C):", font=("Heather", 12), bg="#DBBD8F")
         self.temperature_label.grid(row=1, column=0, padx=10, pady=10, sticky=tk.E)
 
-        self.temperature_entry = tk.Entry(self.window, bd=5)
-        self.temperature_entry.grid(row=1, column=1, padx=10, pady=10, sticky=tk.W)
+        self.temperature_spinbox = tk.Spinbox(self.window, bd=4, from_=0, to=50, width=10, font=("Heather", 12))
+        self.temperature_spinbox.grid(row=1, column=1, padx=10, pady=10, sticky=tk.W)
 
         self.output_box = tk.Label(self.window, height=16, width=55, relief=tk.SUNKEN, anchor=tk.NW, justify=tk.LEFT, font=("Heather", 11), bd=10)
         self.output_box.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
@@ -80,12 +80,12 @@ class App:
             logging.error("No film type selected.")
             return
         try:
-            temperature = int(self.temperature_entry.get())
+            temperature = int(self.temperature_spinbox.get())
         except ValueError:
             messagebox.showerror("Error", "Invalid temperature value. Please enter a valid integer.")
             logging.error("Invalid temperature value.")
             return
-        temperature = int(self.temperature_entry.get())
+        temperature = int(self.temperature_spinbox.get())
         temperature_difference = int(self.control_temperature - temperature)
 
         developer_time = int(self.json_data['formulas']['development']['control_time'])
